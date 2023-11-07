@@ -31,13 +31,13 @@ void VectorInt::push_back(int value)
         mp_Data[m_size - 1] = value;
         return;
     }
+    m_capacity = 2 * m_size;
     resize(m_size);
     mp_Data[m_size - 1] = value;
 }
 
 int VectorInt::at(int index)
 {
-    // if (index > m_size) return 0;
     return mp_Data[index];
 }
 
@@ -49,7 +49,7 @@ int VectorInt::size()
 void VectorInt::resize(int size)
 {
     m_size = m_size > size ? size : m_size;  
-    m_capacity = m_size > m_capacity ? m_capacity * 2 : m_capacity;
+    // m_capacity = m_size > m_capacity ? m_capacity * 2 : m_capacity;
     std::cout << "new capacity " << m_capacity << std::endl;
 
     int* temp = new int[m_capacity];
