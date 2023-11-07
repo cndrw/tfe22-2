@@ -1,19 +1,24 @@
 #include <fmt/chrono.h>
 #include <fmt/format.h>
 
+#include "CLI/CLI.hpp"
+// #include "config.h"
+
+#include <vector>
+#include <cstdlib>
+
 #include "vectorint.hpp"
 
-auto main(int argc, char **argv) -> int
+int main()
 {
-    /**
-     * The {fmt} lib is a cross platform library for printing and formatting text
-     * it is much more convenient than std::cout and printf
-     * More info at https://fmt.dev/latest/api.html
-     */
-    fmt::print("Hello, World!\n");
+    VectorInt vec(5);
+    vec[2] = 42;
+    vec.push_back(23);
+    vec.resize(7);
 
-    /* INSERT YOUR CODE HERE */
-    VectorInt data(20);
-
-    return 0; /* exit gracefully*/
+    for (int i = 0; i < vec.size(); i++)
+    {
+        std::cout << vec[i]  << std::endl;
+    }
+    return 0; 
 }
