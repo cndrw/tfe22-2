@@ -12,13 +12,24 @@
 int main()
 {
     VectorInt vec(5);
-    vec[2] = 42;
-    vec.push_back(23);
-    vec.resize(7);
+    vec[0] = 1;
+    vec[1] = 2;
+    vec[2] = 3;
 
-    for (int i = 0; i < vec.size(); i++)
+    std::cout << vec.size() << std::endl;
+
+    VectorInt vec2(vec);
+
+    VectorInt vec3(2);
+
+    vec3 = vec;
+
+    for (int i = 0; i < vec3.size(); i++)
     {
-        std::cout << vec[i]  << std::endl;
+        fmt::print("vec: {}  vec2: {}  vec3: {}\n", vec[i], vec2[i], vec3[i]);
     }
-    return 0; 
+
+    vec.push_back(42);
+    std::cout << vec.size() << std::endl;
+
 }

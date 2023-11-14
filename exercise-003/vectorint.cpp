@@ -14,6 +14,13 @@ VectorInt::VectorInt(int size) : m_size(size), m_capacity(size)
     }
 }
 
+VectorInt::VectorInt(VectorInt& src)
+{
+    mp_Data = new int(1);
+    copy_data(src);
+    std::cout << "Copy Constructor called\n";
+}
+
 VectorInt::~VectorInt() 
 {
     if(mp_Data != nullptr) 
@@ -67,4 +74,28 @@ void VectorInt::clear()
 int& VectorInt::operator[](const size_t index)
 {
     return mp_Data[index];
+}
+
+auto VectorInt::operator=(const VectorInt& src) -> VectorInt&
+{
+    copy_data(src);
+    return *this;
+}
+
+void VectorInt::copy_data(const VectorInt& src)
+{
+    m_size =  src.m_size;
+    m_capacity = src.m_capacity;
+    delete[] mp_Data;
+    mp_Data = new int[m_size];
+
+    if (src.mp_Data)
+    {
+        memcpy(mp_Data, src.mp_Data, src.m_size * sizeof(int));
+    }
+    else 
+    {
+        std::cout << "source Data was null\n";
+    }
+
 }
